@@ -24,18 +24,15 @@
     include_once("controller/cUser.php");
     $p = new cUser();
     $result = $p->cLogin($_POST['txtUsername'],$_POST['txtPassword']);
-    switch($result){
-      case 'true':
-        echo "<script>window.alert('Đăng nhập vào thành công'); window.location.href='index.php';</script>";
-        break;
-      case 'false':
-        echo "<script>window.alert('Đăng nhập không thành công'); window.location.href='index.php?page=login';</script>";
-        break;
-      default: 
-        echo '<script>window.alert("Lỗi, đăng nhập"); window.location.href="index.php?page=login";</script>';
-       
+    
+      if($result == true){
+        echo "<script>alert('Dang nhap thanh cong!')</script>";
+        header("refresh:0; url=index.php");
+      }
+      else{
+        echo "<scrip>alert('sai thong tin dang nhap')</scrip>";
+      }
     }
-  }
 
   ?>
 </body>

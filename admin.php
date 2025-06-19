@@ -1,5 +1,6 @@
 <?php
 session_start();
+error_reporting();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -7,7 +8,7 @@ session_start();
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/adminstyle.css">
   <title>Trang chủ</title>
 </head>
 
@@ -20,10 +21,10 @@ session_start();
       <?php include("view/nav.php")?>
     </div>
     <div class="aside">
-      <h2>Danh mục san pham</h2>
-      <a href="">Food cho cat</a>
-      <a href="">Food cho dog</a>
-      <a href="">Cat</a>
+      <h2><i>TRANG ADMIN</i></h2>
+      <a href="admin.php?page=product-category">Danh sách loại</a>
+      <a href="admin.php?page=product">Sản phẩm</a>
+      <a href="admin.php?page=user">Người dùng</a>
     </div>
     <div class="content">
       <?php 
@@ -31,11 +32,14 @@ session_start();
         $p = $_REQUEST["page"];
       
         switch($p){
-          case "signup":
-            include_once("view/signup.php");
+          case "product-category":
+            include_once("view/list-manage-product-category.php");
           break;
-          case "login":
-            include_once("view/login.php");
+          case "product":
+            include_once("view/list-manage-product.php");
+          break;
+           case "user":
+            include_once("view/list-manage-user.php");
           break;
         }
       }
