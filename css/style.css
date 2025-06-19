@@ -1,0 +1,108 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+/* Container và header */
+.container {
+  width: 100%;
+}
+
+.header img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+}
+
+/* NAV: menu, link và search */
+.nav {
+  background-color: #333;
+  color: white;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px;
+  flex-wrap: wrap;
+}
+
+.menu {
+  flex: 1;
+}
+
+.menu-link {
+  flex: 2;
+  text-align: left;
+}
+
+.menu-link a {
+  color: white;
+  text-decoration: none;
+  margin: 0 15px;
+  font-weight: bold;
+}
+
+.menu-link a:hover {
+  color: #ffcc00;
+}
+
+.search-form {
+  flex: 1;
+  text-align: right;
+}
+
+.search-form input[type="search"] {
+  padding: 5px;
+  width: 150px;
+}
+
+.search-button {
+  padding: 5px 10px;
+  background-color: #ffcc00;
+  border: none;
+  cursor: pointer;
+}
+
+.search-button:hover {
+  background-color: #e6b800;
+}
+
+/* Main layout: Aside và Content */
+.aside {
+  float: left;
+  width: 25%;
+  background-color: #f4f4f4;
+  padding: 15px;
+  min-height: 300px;
+}
+
+.aside h2 {
+  margin-bottom: 10px;
+}
+
+.aside a {
+  display: block;
+  margin: 5px 0;
+  text-decoration: none;
+  color: #333;
+}
+
+.aside a:hover {
+  text-decoration: underline;
+}
+
+.content {
+  float: left;
+  width: 75%;
+  padding: 15px;
+  min-height: 300px;
+}
+
+/* Footer */
+.footer {
+  clear: both;
+  text-align: center;
+  padding: 10px;
+  background-color: #ddd;
+}
