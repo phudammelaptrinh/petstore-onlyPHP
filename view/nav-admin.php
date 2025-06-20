@@ -4,12 +4,13 @@
     
     
     if(isset($_SESSION["login"])  && $_SESSION["login"]==true){
-      echo "<a href='admin.php'>Quản lý</a>";
-      echo "<a href='index.php?page=logout'>Đăng xuất</a>";
+
+      echo "<a href='admin.php'>Trang chủ</a>";
+      echo "<a href='admin.php?page=logout'>Đăng xuất</a>";
     }
     else{
-      echo "<a href='index.php?page=login'>Đăng nhập</a>";
-      echo "<a href='index.php?page=signup'>Đăng ký</a>";
+      echo "<a href='admin.php'>Trang chủ</a>";
+      echo "<a href='admin.php?page=login'>Đăng nhập</a>";
     }
   ?>
 </div>

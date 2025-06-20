@@ -1,6 +1,12 @@
 <?php
 session_start();
-error_reporting();
+
+
+if (!isset($_SESSION["login"]) && (!isset($_GET["page"]) || $_GET["page"] != "login")) {
+  header("Location: admin.php?page=login");
+  exit();
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,7 +24,7 @@ error_reporting();
       <img src="images/cat-icegif-14.gif" width="100%" height="100px">
     </div>
     <div class="nav">
-      <?php include("view/nav.php")?>
+      <?php include("view/nav-admin.php")?>
     </div>
     <div class="aside">
       <h2><i>TRANG ADMIN</i></h2>
@@ -41,6 +47,14 @@ error_reporting();
            case "user":
             include_once("view/list-manage-user.php");
           break;
+
+          case "login":
+          include_once("view/login-admin.php");
+          break;
+          case "logout":
+          include_once("view/logout-admin.php");
+          break;
+
         }
       }
       else{

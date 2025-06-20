@@ -27,10 +27,10 @@
     
       if($result == true){
         echo "<script>alert('Dang nhap thanh cong!')</script>";
-        header("refresh:0; url=index.php");
+        header("refresh:0; url=admin.php");
       }
       else{
-        echo "<scrip>alert('sai thong tin dang nhap')</scrip>";
+        echo "<script>alert('sai thong tin dang nhap')</script>";
       }
     }
 

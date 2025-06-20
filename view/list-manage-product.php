@@ -1,60 +1,93 @@
 <?php
-
 include_once("controller/cProduct.php");
 
-// se co 3 dong
 $p = new cProduct();
 $tblProduct = $p->getAllProduct();
 $dem = 1;
+?>
 
-// check ket voi 
-// truong hop 1 : gan bang === -2 thi se loi lien quan toi authentication, 
-// truong hop 2 : gan bang === -1 thi se loi lien quan toi database, 
-// truong hop 3 : co du lieu thi se tao bang 
+<!-- CSS trực tiếp -->
+<style>
+table {
+  width: 90%;
+  margin: 20px auto;
+  border-collapse: collapse;
+  font-family: Arial, sans-serif;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
 
+th,
+td {
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  text-align: center;
+  vertical-align: middle;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+tr:hover {
+  background-color: #eef;
+}
+
+img {
+  max-height: 80px;
+  max-width: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+a {
+  text-decoration: none;
+  font-weight: bold;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+</style>
+
+<?php
 if ($tblProduct === -2) {
-
-  echo "Loi server, vui long lien he voi admin!";
-
+  echo "Lỗi server, vui lòng liên hệ với admin!";
 } elseif ($tblProduct === -1) {
   echo "No data recording!";
 } else {
-  // tao cot 
   echo '<table>
-  <tr>
-    <th>STT</th>
-    <th>Name</th>
-    <th>Image</th>
-    <th>Price</th>
-    <th>InputPrice</th>
-    <th>SalePrice</th>
-    <th>Quantity</th>
-    <th>Action</th>
-  </tr>';
-  
-  // du lieu 
+    <tr>
+      <th>STT</th>
+      <th>Name</th>
+      <th>Image</th>
+      <th>Price</th>
+      <th>InputPrice</th>
+      <th>SalePrice</th>
+      <th>Quantity</th>
+      <th>Action</th>
+    </tr>';
+
   while ($row = $tblProduct->fetch_assoc()) {
-    // folder mapping
     $imagePath = $p->getImagePath($row['idloaisanpham'], $row['hinhanh']);
-    
+
     echo "<tr>";
     echo "<td>" . $dem . "</td>";
     echo "<td>" . $row['tensanpham'] . "</td>";
-    echo "<td><img src='" . $imagePath . "' height='100px'></td>"; // sua nhe: dua vao td
-    echo "<td>" . number_format($row['dongia'], 0, ',', '.') . "</td>";
-    echo "<td>" . number_format($row['giagoc'], 0, ',', '.') . "</td>";
-    echo "<td>" . $row['giaban'] . "</td>";
+    echo "<td><img src='" . $imagePath . "'></td>";
+    echo "<td>" . number_format($row['dongia'], 0, ',', '.') . " đ</td>";
+    echo "<td>" . number_format($row['giagoc'], 0, ',', '.') . " đ</td>";
+    echo "<td>" . number_format($row['giaban'], 0, ',', '.') . " đ</td>";
     echo "<td>" . $row['soluongton'] . "</td>";
-    
-    // action
-    echo "<td><a href='#' style='color:green' >Edit</a>| <a href='#' style='color:red'>Delete</a></td>";
-    
+    echo "<td><a href='#' style='color:green'>Edit</a> | <a href='#' style='color:red'>Delete</a></td>";
     echo "</tr>";
+
     $dem++;
   }
-  
-  // dong the
+
   echo '</table>';
 }
-
 ?>
